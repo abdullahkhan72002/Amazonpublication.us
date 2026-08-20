@@ -70,17 +70,17 @@ export default function LeadForm({
   const isOnDark = variant === "onDark";
 
   const wrapperClasses = isCard
-    ? "rounded-2xl bg-white p-6 shadow-2xl shadow-black/20 sm:p-8"
+    ? "rounded-2xl bg-white p-6 shadow-2xl shadow-black/10 sm:p-8"
     : isFlat
       ? "w-full"
-      : "rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8";
+      : "rounded-2xl bg-primary p-6 shadow-2xl shadow-black/20 sm:p-8";
 
-  const titleClasses = isOnDark ? "text-white" : "text-primary";
-  const labelClasses = isOnDark ? "text-white/80" : "text-primary/80";
+  const titleClasses = isOnDark ? "text-white" : "text-foreground";
+  const labelClasses = isOnDark ? "text-white/80" : "text-foreground/80";
   const controlClasses = isOnDark
-    ? "border-white/15 bg-white/95 text-primary placeholder:text-primary/35 focus:border-secondary"
-    : "border-primary/15 bg-white text-primary placeholder:text-primary/35 focus:border-secondary";
-  const messageClasses = isOnDark ? "text-white/80" : "text-primary/80";
+    ? "border-white/15 bg-white text-foreground placeholder:text-foreground/35 focus:border-white"
+    : "border-foreground/15 bg-white text-foreground placeholder:text-foreground/35 focus:border-primary";
+  const messageClasses = isOnDark ? "text-white/80" : "text-foreground/80";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -175,20 +175,20 @@ export default function LeadForm({
         })}
 
         {status === "success" ? (
-          <p className={`text-nav rounded-md border border-secondary/30 bg-secondary/10 px-4 py-3 ${messageClasses}`}>
+          <p className={`text-nav rounded-md border border-primary/20 bg-white px-4 py-3 ${messageClasses}`}>
             Thank you! Your message has been sent. We&apos;ll get back to you soon.
           </p>
         ) : null}
 
         {status === "error" ? (
-          <p className="text-nav rounded-md border border-red-300 bg-red-50 px-4 py-3 text-red-700">
+          <p className="text-nav rounded-md border border-foreground/20 bg-white px-4 py-3 text-foreground">
             {errorMessage}
           </p>
         ) : null}
 
         <Button
           type="submit"
-          variant="primary-light"
+          variant={isOnDark ? "white" : "primary-light"}
           className="mt-2 w-full rounded-md"
           disabled={status === "loading"}
         >

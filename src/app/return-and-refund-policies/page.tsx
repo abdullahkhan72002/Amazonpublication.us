@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ReturnAndRefundPoliciesPage() {
   return (
     <>
-      <div className="bg-hero -mt-[var(--header-height)] pt-[var(--header-height)]">
+      <div className="bg-white">
         <PageHero {...returnAndRefundContent.hero} />
       </div>
       <LegalContent blocks={returnAndRefundContent.blocks} />

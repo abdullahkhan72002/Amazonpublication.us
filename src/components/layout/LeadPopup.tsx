@@ -82,7 +82,7 @@ export default function LeadPopup() {
   if (!open) return null;
 
   const inputClasses =
-    "text-nav w-full rounded-lg border border-primary/20 bg-white px-4 py-3 text-primary outline-none transition-colors placeholder:text-primary/40 focus:border-secondary";
+    "text-nav w-full rounded-lg border border-foreground/20 bg-white px-4 py-3 text-foreground outline-none transition-colors placeholder:text-foreground/40 focus:border-primary";
 
   return (
     <div
@@ -105,7 +105,7 @@ export default function LeadPopup() {
             className="font-heading text-2xl font-semibold leading-snug text-white sm:text-3xl"
           >
             {leadPopupContent.titleBefore}{" "}
-            <span className="text-secondary">
+            <span className="text-white">
               {leadPopupContent.titleHighlight}
             </span>
           </h2>
@@ -128,11 +128,11 @@ export default function LeadPopup() {
 
           <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:gap-10">
             <a href={site.phoneHref} className="group flex flex-col gap-1">
-              <span className="text-nav flex items-center gap-2 text-secondary">
+              <span className="text-nav flex items-center gap-2 text-white">
                 <Phone className="size-4" aria-hidden />
                 {leadPopupContent.callLabel}
               </span>
-              <span className="text-nav text-white transition-colors group-hover:text-secondary">
+              <span className="text-nav text-white/80 transition-colors group-hover:text-white">
                 {site.phone}
               </span>
             </a>
@@ -140,11 +140,11 @@ export default function LeadPopup() {
               href={`mailto:${site.email}`}
               className="group flex flex-col gap-1"
             >
-              <span className="text-nav flex items-center gap-2 text-secondary">
+              <span className="text-nav flex items-center gap-2 text-white">
                 <AtSign className="size-4" aria-hidden />
                 {leadPopupContent.discussLabel}
               </span>
-              <span className="text-nav text-white transition-colors group-hover:text-secondary">
+              <span className="text-nav text-white/80 transition-colors group-hover:text-white">
                 {site.email}
               </span>
             </a>
@@ -156,7 +156,7 @@ export default function LeadPopup() {
             type="button"
             onClick={close}
             aria-label="Close"
-            className="absolute right-4 top-4 flex size-8 items-center justify-center bg-primary text-white transition-colors hover:bg-secondary hover:text-primary sm:right-5 sm:top-5"
+            className="absolute right-4 top-4 flex size-8 items-center justify-center bg-primary text-white transition-colors hover:bg-white hover:text-primary sm:right-5 sm:top-5"
           >
             <X className="size-4" aria-hidden />
           </button>
@@ -175,7 +175,7 @@ export default function LeadPopup() {
             />
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="popup-name" className="text-nav text-primary">
+              <label htmlFor="popup-name" className="text-nav text-foreground">
                 {leadPopupContent.form.name.label}
               </label>
               <input
@@ -189,7 +189,7 @@ export default function LeadPopup() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="popup-email" className="text-nav text-primary">
+              <label htmlFor="popup-email" className="text-nav text-foreground">
                 {leadPopupContent.form.email.label}
               </label>
               <input
@@ -203,7 +203,7 @@ export default function LeadPopup() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="popup-phone" className="text-nav text-primary">
+              <label htmlFor="popup-phone" className="text-nav text-foreground">
                 {leadPopupContent.form.phone.label}
               </label>
               <input
@@ -217,7 +217,7 @@ export default function LeadPopup() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="popup-message" className="text-nav text-primary">
+              <label htmlFor="popup-message" className="text-nav text-foreground">
                 {leadPopupContent.form.message.label}
               </label>
               <textarea
@@ -231,13 +231,13 @@ export default function LeadPopup() {
             </div>
 
             {status === "success" ? (
-              <p className="text-nav rounded-lg border border-secondary/30 bg-secondary/10 px-4 py-3 text-primary">
+              <p className="text-nav rounded-lg border border-primary/20 bg-white px-4 py-3 text-foreground">
                 Thank you! Your message has been sent.
               </p>
             ) : null}
 
             {status === "error" ? (
-              <p className="text-nav rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-red-700">
+              <p className="text-nav rounded-lg border border-foreground/20 bg-white px-4 py-3 text-foreground">
                 {errorMessage}
               </p>
             ) : null}

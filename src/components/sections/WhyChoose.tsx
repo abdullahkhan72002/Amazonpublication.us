@@ -63,13 +63,17 @@ export default function WhyChoose({
                   className="flex h-full flex-col gap-5 rounded-3xl bg-primary p-6 max-sm:p-5 transition-transform duration-300 hover:-translate-y-1 motion-reduce:transform-none"
                 >
                   <span
-                    className="flex size-12 items-center justify-center rounded-xl bg-secondary text-white"
+                    className="flex size-12 items-center justify-center rounded-xl bg-white text-primary"
                     aria-hidden
                   >
                     <Icon className="size-6" />
                   </span>
                   <h3 className="font-heading text-2xl font-semibold leading-tight text-white max-sm:text-xl">
-                    <HighlightedText text={item.title} highlight={item.highlight} />
+                    <HighlightedText
+                      text={item.title}
+                      highlight={item.highlight}
+                      highlightClassName="text-white"
+                    />
                   </h3>
                   <p className="text-body text-white/75">{item.description}</p>
                 </article>

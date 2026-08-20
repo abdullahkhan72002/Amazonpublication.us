@@ -47,12 +47,12 @@ export default function Services({
               className="h-full"
             >
               <article
-                className="flex h-full flex-col items-start gap-4 rounded-[2.5rem] bg-secondary p-6"
+                className="flex h-full flex-col items-start gap-4 rounded-[2.5rem] bg-white p-6"
               >
-                <h3 className="font-heading text-[30px] font-semibold leading-tight text-white">
+                <h3 className="font-heading text-[30px] font-semibold leading-tight text-foreground">
                   {item.title}
                 </h3>
-                <p className="text-body flex-1 font-light text-white">
+                <p className="text-body flex-1 font-light text-foreground">
                   {item.description}
                 </p>
                 <Link

@@ -114,18 +114,9 @@ export default function Portfolio({
           <SectionHeading
             eyebrow={eyebrow}
             tone="onLight"
+            title={titleLine1}
+            highlight={titleLine1.includes("Portfolio") ? "Portfolio" : undefined}
             titleClassName="max-sm:text-3xl!"
-            title={
-              titleLine2
-                ? (
-                    <>
-                      {titleLine1}
-                      <br />
-                      {titleLine2}
-                    </>
-                  )
-                : titleLine1
-            }
           />
         </Reveal>
 

@@ -17,7 +17,7 @@ export default function ServicePageLayout({
 }) {
   return (
     <>
-      <div className="bg-hero -mt-[var(--header-height)] pt-[var(--header-height)]">
+      <div className="bg-white">
         <Hero {...content.hero} />
         <BrandStrip {...brandStripContent} />
       </div>

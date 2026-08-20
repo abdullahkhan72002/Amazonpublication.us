@@ -17,11 +17,11 @@ export default function AboutIntro({
   imageAlt,
 }: AboutIntroProps) {
   return (
-    <section className="pb-14 pt-10 max-sm:pb-10 max-sm:pt-6 lg:pb-16 lg:pt-14">
+    <section className="bg-white pb-14 pt-10 max-sm:pb-10 max-sm:pt-6 lg:pb-16 lg:pt-14">
       <Container className="grid items-center gap-8 max-sm:gap-6 lg:grid-cols-2 lg:gap-12">
         <div className="flex flex-col gap-5 max-sm:gap-4">
           <Reveal variant="fade-up">
-            <h1 className="font-heading text-section-heading text-secondary max-sm:!text-3xl">
+            <h1 className="font-heading text-section-heading text-primary max-sm:!text-3xl">
               {title}
             </h1>
           </Reveal>
@@ -33,7 +33,7 @@ export default function AboutIntro({
                 variant="fade-up"
                 delay={80 + index * 70}
               >
-                <p className="text-body max-w-xl text-white/75">{paragraph}</p>
+                <p className="text-body max-w-xl text-foreground/75">{paragraph}</p>
               </Reveal>
             ))}
           </div>

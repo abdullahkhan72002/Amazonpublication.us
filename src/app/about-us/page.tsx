@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default function AboutUsPage() {
   return (
     <>
-      <div className="bg-hero -mt-[var(--header-height)] pt-[var(--header-height)]">
+      <div className="bg-white">
         <AboutIntro {...aboutIntroContent} />
       </div>
       <SplitSection {...aboutStoryContent} />

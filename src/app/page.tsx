@@ -24,7 +24,7 @@ import {
 export default function Home() {
   return (
     <>
-      <div className="bg-hero -mt-[var(--header-height)] pt-[var(--header-height)]">
+      <div className="bg-white">
         <Hero {...heroContent} />
         <BrandStrip {...brandStripContent} />
       </div>

@@ -2,9 +2,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #14142b;
-  --primary: #02012c;
-  --secondary: #5ab7c0;
+  --foreground: #000000;
+  --primary: #0a0080;
+  --secondary: #0a0080;
   /* Top bar (h-9) + main nav (h-20) */
   --header-height: 7.25rem;
   --container-content: 1240px;
@@ -14,10 +14,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-deep: #010119;
+  --color-primary-deep: #0a0080;
   --color-secondary: var(--secondary);
-  --color-secondary-dark: #40969f;
-  --color-secondary-soft: #e9f6f7;
+  --color-secondary-dark: #0a0080;
+  --color-secondary-soft: #ffffff;
   --font-heading: var(--font-syne), sans-serif;
   --font-sans: var(--font-rubik), sans-serif;
   --max-width-container: 1240px;
@@ -43,8 +43,8 @@ h6 {
 }
 
 ::selection {
-  background: var(--secondary);
-  color: var(--primary);
+  background: var(--primary);
+  color: #ffffff;
 }
 
 /* Typography scale */
@@ -118,70 +118,66 @@ h6 {
   transform: translateX(0);
 }
 
-.btn-sweep-secondary-dark {
-  background-color: var(--secondary);
-  color: #fff;
-}
-
-.btn-sweep-secondary-dark::before {
-  background-color: #fff;
-}
-
-.btn-sweep-secondary-dark:hover {
-  color: var(--primary);
-}
-
+.btn-sweep-secondary-dark,
 .btn-sweep-secondary-light {
-  background-color: var(--secondary);
-  color: #fff;
-}
-
-.btn-sweep-secondary-light::before {
   background-color: var(--primary);
+  color: #ffffff;
 }
 
+.btn-sweep-secondary-dark::before,
+.btn-sweep-secondary-light::before {
+  background-color: #ffffff;
+}
+
+.btn-sweep-secondary-dark:hover,
 .btn-sweep-secondary-light:hover {
-  color: #fff;
+  color: var(--primary);
 }
 
 .btn-sweep-primary-light {
   background-color: var(--primary);
-  color: #fff;
+  color: #ffffff;
 }
 
 .btn-sweep-primary-light::before {
-  background-color: var(--secondary);
+  background-color: #ffffff;
 }
 
 .btn-sweep-primary-light:hover {
   color: var(--primary);
 }
 
+.btn-sweep-white {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.btn-sweep-white::before {
+  background-color: var(--primary);
+}
+
+.btn-sweep-white:hover {
+  color: #ffffff;
+}
+
 .btn-sweep-outline-dark {
   background-color: transparent;
   border: 1px solid rgb(255 255 255 / 0.35);
-  color: #fff;
+  color: #ffffff;
 }
 
 .btn-sweep-outline-dark::before {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .btn-sweep-outline-dark:hover {
-  border-color: #fff;
+  border-color: #ffffff;
   color: var(--primary);
 }
 
 .bg-hero {
   overflow: hidden;
-  background-color: var(--primary);
-  background-image: radial-gradient(
-    120% 130% at 72% 35%,
-    #2c3183 0%,
-    #191862 42%,
-    #05043a 74%,
-    var(--primary) 100%
-  );
+  background-color: #ffffff;
 }
 
 .heading-band {
@@ -189,7 +185,7 @@ h6 {
     90deg,
     var(--primary) 0%,
     var(--primary) 55%,
-    rgba(2, 1, 44, 0) 96%
+    rgb(255 255 255 / 0) 96%
   );
 }
 

@@ -71,7 +71,7 @@ export default function SplitSection({
 }: SplitSectionProps) {
   const isDark = tone === "onDark";
   const sectionBg = isDark ? "bg-primary" : "bg-white";
-  const paragraphColor = isDark ? "text-white/75" : "text-primary/75";
+  const paragraphColor = isDark ? "text-white/75" : "text-foreground/75";
   const headingTone = isDark ? "onDark" : "onLight";
   const imageRevealVariant =
     imagePosition === "left" ? "fade-left" : "fade-right";
@@ -137,7 +137,7 @@ export default function SplitSection({
             >
               <li className="flex items-center gap-3">
                 <MousePointerClick
-                  className="size-5 shrink-0 text-secondary"
+                  className={`size-5 shrink-0 ${isDark ? "text-white" : "text-primary"}`}
                   aria-hidden
                 />
                 <span className={`text-body ${paragraphColor}`}>{feature}</span>
@@ -152,7 +152,7 @@ export default function SplitSection({
           <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Button
               href={phoneHref}
-              variant="secondary-dark"
+              variant={isDark ? "white" : "primary-light"}
               icon={<Phone className="size-4" aria-hidden />}
               className="max-sm:w-full"
             >
@@ -160,7 +160,7 @@ export default function SplitSection({
             </Button>
             <Button
               href={primaryCta.href}
-              variant="secondary-dark"
+              variant={isDark ? "white" : "primary-light"}
               icon={
                 primaryCta.icon === "calendar" ? (
                   <Calendar className="size-4" aria-hidden />
@@ -189,8 +189,8 @@ export default function SplitSection({
                 <span
                   className={`flex size-11 max-sm:size-10 items-center justify-center rounded-full border transition-colors duration-300 ${
                     isDark
-                      ? "border-white/20 text-white group-hover:border-secondary group-hover:text-secondary"
-                      : "border-primary/15 text-primary group-hover:border-secondary group-hover:text-secondary"
+                      ? "border-white/20 text-white group-hover:border-white group-hover:text-white"
+                      : "border-foreground/15 text-primary group-hover:border-primary group-hover:text-primary"
                   }`}
                 >
                   {contact.kind === "phone" ? (
@@ -202,7 +202,7 @@ export default function SplitSection({
                 <span className="flex flex-col">
                   <span
                     className={`font-heading text-lg max-sm:text-base font-semibold ${
-                      isDark ? "text-white" : "text-primary"
+                      isDark ? "text-white" : "text-foreground"
                     }`}
                   >
                     {contact.title}
@@ -210,8 +210,8 @@ export default function SplitSection({
                   <span
                     className={`text-nav transition-colors duration-300 ${
                       isDark
-                        ? "text-white/70 group-hover:text-secondary"
-                        : "text-primary/70 group-hover:text-secondary"
+                        ? "text-white/70 group-hover:text-white"
+                        : "text-foreground/70 group-hover:text-primary"
                     }`}
                   >
                     {contact.value}

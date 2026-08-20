@@ -54,7 +54,7 @@ export default function Faq({
         <Reveal variant="fade-up" delay={100} className="mx-auto flex w-full max-w-full flex-col gap-4">
           <div className="relative">
             <Search
-              className="pointer-events-none absolute left-5 top-1/2 size-4 -translate-y-1/2 text-primary/50"
+              className="pointer-events-none absolute left-5 top-1/2 size-4 -translate-y-1/2 text-foreground/50"
               aria-hidden
             />
             <label htmlFor="faq-search" className="sr-only">
@@ -66,7 +66,7 @@ export default function Faq({
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={searchPlaceholder}
-              className="text-nav w-full rounded-full border border-white/20 bg-white py-3 pl-12 pr-5 text-primary outline-none transition-colors placeholder:text-primary/45 focus:border-secondary"
+              className="text-nav w-full rounded-full border border-white/20 bg-white py-3 pl-12 pr-5 text-foreground outline-none transition-colors placeholder:text-foreground/45 focus:border-primary"
             />
           </div>
 
@@ -86,7 +86,7 @@ export default function Faq({
                       setOpenQuestion(isOpen ? null : item.question)
                     }
                     aria-expanded={isOpen}
-                    className="text-nav flex items-center justify-between gap-4 rounded-full bg-white px-6 py-3.5 text-left font-normal text-primary transition-colors hover:bg-secondary-soft"
+                    className="text-nav flex items-center justify-between gap-4 rounded-full bg-white px-6 py-3.5 text-left font-normal text-foreground transition-colors hover:bg-white/90"
                   >
                     {item.question}
                     {isOpen ? (

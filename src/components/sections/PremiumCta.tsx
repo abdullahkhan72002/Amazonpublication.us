@@ -44,7 +44,7 @@ export default function PremiumCta({
 
         <div className="flex flex-col">
           <Reveal variant="fade-left" delay={80}>
-            <div className="relative z-0 mt-1 bg-secondary py-3 pl-6 sm:pl-8 lg:-ml-28 lg:-mr-[50vw] lg:pl-32 lg:pr-[50vw]">
+            <div className="relative z-0 mt-1 bg-primary py-3 pl-6 sm:pl-8 lg:-ml-28 lg:-mr-[50vw] lg:pl-32 lg:pr-[50vw]">
               <span className="font-heading text-5xl font-bold text-white sm:text-8xl">
                 {bandWord}
               </span>
@@ -52,11 +52,11 @@ export default function PremiumCta({
           </Reveal>
 
           <Reveal variant="fade-left" delay={140} className="flex flex-col gap-6 pt-6 lg:pl-8">
-            <h2 className="text-section-heading text-primary">
+            <h2 className="text-section-heading text-foreground">
               <HighlightedText text={title} highlight={highlight} />
             </h2>
 
-            <p className="text-body max-w-xl text-primary/75">{paragraph}</p>
+            <p className="text-body max-w-xl text-foreground/75">{paragraph}</p>
 
             <div className="flex flex-wrap gap-x-12 gap-y-6">
               {contacts.map((contact) => (
@@ -65,7 +65,7 @@ export default function PremiumCta({
                   href={contact.href}
                   className="group flex items-center gap-3"
                 >
-                  <span className="flex size-11 items-center justify-center rounded-full border border-primary/15 text-primary transition-colors group-hover:border-secondary group-hover:text-secondary">
+                  <span className="flex size-11 items-center justify-center rounded-full border border-foreground/15 text-primary transition-colors group-hover:border-primary group-hover:text-primary">
                     {contact.kind === "phone" ? (
                       <PhoneCall className="size-5" aria-hidden />
                     ) : (
@@ -73,10 +73,10 @@ export default function PremiumCta({
                     )}
                   </span>
                   <span className="flex flex-col">
-                    <span className="font-heading text-lg font-semibold text-primary">
+                    <span className="font-heading text-lg font-semibold text-foreground">
                       {contact.title}
                     </span>
-                    <span className="text-nav text-primary/70 transition-colors group-hover:text-secondary">
+                    <span className="text-nav text-foreground/70 transition-colors group-hover:text-primary">
                       {contact.value}
                     </span>
                   </span>

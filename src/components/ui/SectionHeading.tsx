@@ -3,10 +3,15 @@ import type { ReactNode } from "react";
 type HighlightedTextProps = {
   text: string;
   highlight?: string;
+  highlightClassName?: string;
 };
 
-/** Renders `text` with the first occurrence of `highlight` painted in the secondary color. */
-export function HighlightedText({ text, highlight }: HighlightedTextProps) {
+/** Renders `text` with the first occurrence of `highlight` painted in the accent color. */
+export function HighlightedText({
+  text,
+  highlight,
+  highlightClassName = "text-primary",
+}: HighlightedTextProps) {
   if (!highlight) return <>{text}</>;
 
   const start = text.indexOf(highlight);
@@ -15,7 +20,7 @@ export function HighlightedText({ text, highlight }: HighlightedTextProps) {
   return (
     <>
       {text.slice(0, start)}
-      <span className="text-secondary">{highlight}</span>
+      <span className={highlightClassName}>{highlight}</span>
       {text.slice(start + highlight.length)}
     </>
   );
@@ -42,15 +47,21 @@ export default function SectionHeading({
   className = "",
   titleClassName = "",
 }: SectionHeadingProps) {
-  const titleColor = tone === "onDark" ? "text-white" : "text-primary";
-  const subtitleColor = tone === "onDark" ? "text-white/70" : "text-primary/70";
+  const isDark = tone === "onDark";
+  const titleColor = isDark ? "text-white" : "text-foreground";
+  const subtitleColor = isDark ? "text-white/70" : "text-foreground/70";
+  const highlightColor = isDark ? "text-white" : "text-primary";
   const alignment =
     align === "center" ? "text-center items-center" : "text-left items-start";
 
   return (
     <div className={`flex flex-col gap-4 ${alignment} ${className}`}>
       {eyebrow ? (
-        <p className="text-nav uppercase tracking-[0.2em] text-secondary">
+        <p
+          className={`text-nav uppercase tracking-[0.2em] ${
+            isDark ? "text-white/80" : "text-primary"
+          }`}
+        >
           {eyebrow}
         </p>
       ) : null}
@@ -58,7 +69,11 @@ export default function SectionHeading({
         className={`text-section-heading ${titleColor} ${titleClassName}`}
       >
         {typeof title === "string" ? (
-          <HighlightedText text={title} highlight={highlight} />
+          <HighlightedText
+            text={title}
+            highlight={highlight}
+            highlightClassName={highlightColor}
+          />
         ) : (
           title
         )}

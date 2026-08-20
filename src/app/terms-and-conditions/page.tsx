@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function TermsAndConditionsPage() {
   return (
     <>
-      <div className="bg-hero -mt-[var(--header-height)] pt-[var(--header-height)]">
+      <div className="bg-white">
         <PageHero {...termsAndConditionsContent.hero} />
       </div>
       <LegalContent blocks={termsAndConditionsContent.blocks} />

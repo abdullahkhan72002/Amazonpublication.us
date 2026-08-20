@@ -107,7 +107,7 @@ export default function GenreTabs({
             <p className="text-body max-w-xl text-white/75">{activeTab.description}</p>
             <Button
               href={phoneHref}
-              variant="secondary-dark"
+              variant="white"
               icon={<Phone className="size-4" aria-hidden />}
               className="max-sm:w-full"
             >

@@ -26,7 +26,7 @@ export default function LegalContent({ blocks }: LegalContentProps) {
                 return (
                   <h2
                     key={key}
-                    className="font-heading text-2xl font-semibold text-primary max-sm:text-xl pt-2"
+                    className="font-heading text-2xl font-semibold text-foreground max-sm:text-xl pt-2"
                   >
                     {block.text}
                   </h2>
@@ -37,7 +37,7 @@ export default function LegalContent({ blocks }: LegalContentProps) {
                 return (
                   <h3
                     key={key}
-                    className="font-heading text-lg font-semibold text-primary max-sm:text-base"
+                    className="font-heading text-lg font-semibold text-foreground max-sm:text-base"
                   >
                     {block.text}
                   </h3>
@@ -48,7 +48,7 @@ export default function LegalContent({ blocks }: LegalContentProps) {
                 return (
                   <ul
                     key={key}
-                    className="flex list-disc flex-col gap-2 pl-5 text-body text-primary/80"
+                    className="flex list-disc flex-col gap-2 pl-5 text-body text-foreground/80"
                   >
                     {block.items.map((item) => (
                       <li key={item}>{item}</li>
@@ -58,7 +58,7 @@ export default function LegalContent({ blocks }: LegalContentProps) {
               }
 
               return (
-                <p key={key} className="text-body text-primary/80">
+                <p key={key} className="text-body text-foreground/80">
                   {block.text}
                 </p>
               );

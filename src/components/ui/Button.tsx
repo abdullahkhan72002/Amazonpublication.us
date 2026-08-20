@@ -5,13 +5,15 @@ export type SweepVariant =
   | "secondary-dark"
   | "secondary-light"
   | "primary-light"
-  | "outline-dark";
+  | "outline-dark"
+  | "white";
 
 const variantClasses: Record<SweepVariant, string> = {
   "secondary-dark": "btn-sweep btn-sweep-secondary-dark",
   "secondary-light": "btn-sweep btn-sweep-secondary-light",
   "primary-light": "btn-sweep btn-sweep-primary-light",
   "outline-dark": "btn-sweep btn-sweep-outline-dark",
+  white: "btn-sweep btn-sweep-white",
 };
 
 type ButtonBaseProps = {

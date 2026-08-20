@@ -42,13 +42,13 @@ function TestimonialCard({ item }: { item: Testimonial }) {
           {Array.from({ length: item.rating }).map((_, index) => (
             <Star
               key={index}
-              className="size-4 fill-amber-400 text-amber-400"
+              className="size-4 fill-primary text-primary"
               aria-hidden
             />
           ))}
           <span className="sr-only">{item.rating} out of 5 stars</span>
         </div>
-        <p className="text-body text-primary/80">{item.quote}</p>
+        <p className="text-body text-foreground/80">{item.quote}</p>
         <span
           aria-hidden
           className="absolute -bottom-2 left-1/2 size-5 -translate-x-1/2 rotate-45 rounded-br-sm bg-white"
@@ -112,7 +112,7 @@ export default function Testimonials({
               type="button"
               onClick={prev}
               aria-label="Previous testimonial"
-              className="absolute left-2 top-[38%] z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-primary text-white transition-colors hover:border-secondary hover:text-secondary sm:left-2"
+              className="absolute left-2 top-[38%] z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-primary text-white transition-colors hover:border-white hover:text-white sm:left-2"
             >
               <ChevronLeft className="size-5" aria-hidden />
             </button>
@@ -148,7 +148,7 @@ export default function Testimonials({
               type="button"
               onClick={next}
               aria-label="Next testimonial"
-              className="absolute right-2 top-[38%] z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-primary text-white transition-colors hover:border-secondary hover:text-secondary sm:right-2"
+              className="absolute right-2 top-[38%] z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-primary text-white transition-colors hover:border-white hover:text-white sm:right-2"
             >
               <ChevronRight className="size-5" aria-hidden />
             </button>
@@ -165,7 +165,7 @@ export default function Testimonials({
                 aria-current={index === currentPage}
                 onClick={() => goTo(index)}
                 className={`size-2.5 rounded-full transition-colors ${
-                  index === currentPage ? "bg-secondary" : "bg-white/30 hover:bg-white/50"
+                  index === currentPage ? "bg-white" : "bg-white/30 hover:bg-white/50"
                 }`}
               />
             ))}

@@ -48,12 +48,12 @@ export default function BecomeAuthor({
             <div className="flex flex-wrap items-center gap-3">
               <Button
                 href={phoneHref}
-                variant="secondary-dark"
+                variant="white"
                 icon={<Phone className="size-4" aria-hidden />}
               >
                 {phone}
               </Button>
-              <Button href={primaryCta.href} variant="secondary-dark">
+              <Button href={primaryCta.href} variant="white">
                 {primaryCta.label}
               </Button>
             </div>

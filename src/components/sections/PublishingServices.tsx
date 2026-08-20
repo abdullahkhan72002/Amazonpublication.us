@@ -40,7 +40,7 @@ export default function PublishingServices({
       <Container className="grid items-center gap-12 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
         <Reveal variant="fade-right" className="flex flex-col gap-4">
           {paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-body max-w-xl text-primary/75">
+            <p key={paragraph} className="text-body max-w-xl text-foreground/75">
               {paragraph}
             </p>
           ))}
