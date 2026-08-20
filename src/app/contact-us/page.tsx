@@ -1,0 +1,22 @@
+import type { Metadata } from "next";
+import ContactFormSection from "@/components/sections/ContactFormSection";
+import PageHero from "@/components/sections/PageHero";
+import { contactFormContent, contactHeroContent } from "@/data/contact";
+import { site } from "@/data/site";
+
+export const metadata: Metadata = {
+  title: `Contact Us | ${site.name}`,
+  description:
+    "Reach out to Amazon Publication for publishing, editing, marketing, and manuscript support.",
+};
+
+export default function ContactUsPage() {
+  return (
+    <>
+      <div className="bg-hero -mt-[var(--header-height)] pt-[var(--header-height)]">
+        <PageHero {...contactHeroContent} />
+      </div>
+      <ContactFormSection {...contactFormContent} />
+    </>
+  );
+}

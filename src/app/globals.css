@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #14142b;
+  --primary: #02012c;
+  --secondary: #5ab7c0;
+  /* Top bar (h-9) + main nav (h-20) */
+  --header-height: 7.25rem;
+  --container-content: 1240px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-deep: #010119;
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: #40969f;
+  --color-secondary-soft: #e9f6f7;
+  --font-heading: var(--font-syne), sans-serif;
+  --font-sans: var(--font-rubik), sans-serif;
+  --max-width-container: 1240px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-rubik), sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.625;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 600;
+}
+
+::selection {
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+/* Typography scale */
+.text-body {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.625;
+}
+
+.text-nav {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-btn {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.text-section-heading {
+  font-family: var(--font-syne), sans-serif;
+  font-size: 45px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.text-hero-mini {
+  font-family: var(--font-syne), sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.text-hero-display {
+  font-family: var(--font-syne), sans-serif;
+  font-size: clamp(3.5rem, 12vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+/* Service pages: highlighted hero title at 80px (home stays 120px) */
+.text-hero-display-service {
+  font-family: var(--font-syne), sans-serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+/* Sweep hover buttons */
+.btn-sweep {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.btn-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateX(-101%);
+  transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-sweep:hover::before {
+  transform: translateX(0);
+}
+
+.btn-sweep-secondary-dark {
+  background-color: var(--secondary);
+  color: #fff;
+}
+
+.btn-sweep-secondary-dark::before {
+  background-color: #fff;
+}
+
+.btn-sweep-secondary-dark:hover {
+  color: var(--primary);
+}
+
+.btn-sweep-secondary-light {
+  background-color: var(--secondary);
+  color: #fff;
+}
+
+.btn-sweep-secondary-light::before {
+  background-color: var(--primary);
+}
+
+.btn-sweep-secondary-light:hover {
+  color: #fff;
+}
+
+.btn-sweep-primary-light {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.btn-sweep-primary-light::before {
+  background-color: var(--secondary);
+}
+
+.btn-sweep-primary-light:hover {
+  color: var(--primary);
+}
+
+.btn-sweep-outline-dark {
+  background-color: transparent;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  color: #fff;
+}
+
+.btn-sweep-outline-dark::before {
+  background-color: #fff;
+}
+
+.btn-sweep-outline-dark:hover {
+  border-color: #fff;
+  color: var(--primary);
+}
+
+.bg-hero {
+  overflow: hidden;
+  background-color: var(--primary);
+  background-image: radial-gradient(
+    120% 130% at 72% 35%,
+    #2c3183 0%,
+    #191862 42%,
+    #05043a 74%,
+    var(--primary) 100%
+  );
+}
+
+.heading-band {
+  background-image: linear-gradient(
+    90deg,
+    var(--primary) 0%,
+    var(--primary) 55%,
+    rgba(2, 1, 44, 0) 96%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-motion {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
