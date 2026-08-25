@@ -43,10 +43,12 @@ function clearComposer() {
   if (box.dataset.bbUserTyping === "1") return true;
 
   const view = doc.defaultView;
-  const setter = view
-    ? Object.getOwnPropertyDescriptor(view.HTMLTextAreaElement.prototype, "value")
-        ?.set
-    : undefined;
+  if (!view) return false;
+
+  const setter = Object.getOwnPropertyDescriptor(
+    view.HTMLTextAreaElement.prototype,
+    "value",
+  )?.set;
   if (!setter) return false;
 
   setter.call(box, "");
