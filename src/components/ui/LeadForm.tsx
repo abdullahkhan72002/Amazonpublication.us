@@ -80,7 +80,6 @@ export default function LeadForm({
   const controlClasses = isOnDark
     ? "border-white/15 bg-white text-foreground placeholder:text-foreground/35 focus:border-white"
     : "border-foreground/15 bg-white text-foreground placeholder:text-foreground/35 focus:border-primary";
-  const messageClasses = isOnDark ? "text-white/80" : "text-foreground/80";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -175,7 +174,7 @@ export default function LeadForm({
         })}
 
         {status === "success" ? (
-          <p className={`text-nav rounded-md border border-primary/20 bg-white px-4 py-3 ${messageClasses}`}>
+          <p className="text-nav rounded-md border border-primary/20 bg-white px-4 py-3 text-foreground">
             Thank you! Your message has been sent. We&apos;ll get back to you soon.
           </p>
         ) : null}
