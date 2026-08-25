@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import LeadPopup from "@/components/layout/LeadPopup";
 import TrackingCapture from "@/components/layout/TrackingCapture";
+import ZendeskWidget from "@/components/layout/ZendeskWidget";
 import { footerContent, headerContent, site } from "@/data/site";
 import "./globals.css";
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1 overflow-x-clip">{children}</main>
         <Footer {...footerContent} />
         <LeadPopup />
+        <ZendeskWidget />
       </body>
     </html>
   );

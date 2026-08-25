@@ -80,7 +80,7 @@ export default function GenreTabs({
               const Icon = tabIconMap[tab.icon];
               const isActive = tab.id === activeId;
 
-              return (
+              return ( 
                 <button
                   key={tab.id}
                   type="button"
