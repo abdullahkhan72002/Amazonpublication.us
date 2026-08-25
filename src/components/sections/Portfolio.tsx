@@ -24,6 +24,13 @@ export type PortfolioProps = {
   titleLine2?: string;
 };
 
+function isTypingInField(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) return false;
+  if (target.isContentEditable) return true;
+  const tag = target.tagName;
+  return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+}
+
 function useCarouselRadius() {
   const [radius, setRadius] = useState(MOBILE_RADIUS);
 
@@ -83,6 +90,8 @@ export default function Portfolio({
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (isTypingInField(event.target)) return;
+
       switch (event.which) {
         case 37:
           prev();
