@@ -33,7 +33,7 @@ export const headerContent = {
     { label: "Portfolio", href: "/portfolio" },
     { label: "Contact Us", href: "/contact-us" },
   ],
-  consultationCta: { label: "Start Free Consultation", href: "/contact-us" },
+  consultationCta: { label: "Submit Manuscript", href: "/submit-manuscript" },
 };
 
 export const footerContent = {

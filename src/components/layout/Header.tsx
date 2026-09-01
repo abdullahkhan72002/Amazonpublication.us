@@ -108,7 +108,7 @@ export default function Header({
             <img
               src="/newlogo.png"
               alt="Amazon Publication"
-              className="w-36 lg:w-40"
+              className="w-28 sm:w-36 lg:w-40"
             />
           </Link>
 
@@ -169,38 +169,41 @@ export default function Header({
             })}
           </nav>
 
-          <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
-            <Button
-              href={phoneHref}
-              variant="secondary-dark"
-              icon={<Phone className="size-4" aria-hidden />}
-              className="whitespace-nowrap px-3 py-2 text-xs xl:px-5 xl:py-3 xl:text-btn"
-            >
-              {phone}
-            </Button>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <div className="hidden lg:block">
+              <Button
+                href={phoneHref}
+                variant="secondary-dark"
+                icon={<Phone className="size-4" aria-hidden />}
+                className="whitespace-nowrap px-3 py-2 text-xs xl:px-5 xl:py-3 xl:text-btn"
+              >
+                {phone}
+              </Button>
+            </div>
             <Button
               href={consultationCta.href}
               variant="secondary-dark"
-              className="whitespace-nowrap px-3 py-2 text-xs xl:px-5 xl:py-3 xl:text-btn"
+              className="whitespace-nowrap px-2.5 py-2 text-[11px] sm:px-3 sm:text-xs xl:px-5 xl:py-3 xl:text-btn"
             >
-              <span className="2xl:hidden">Free Consultation</span>
-              <span className="hidden 2xl:inline">{consultationCta.label}</span>
+              <span className="min-[400px]:hidden">Submit</span>
+              <span className="hidden min-[400px]:inline">
+                {consultationCta.label}
+              </span>
             </Button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-expanded={menuOpen}
+              aria-label="Toggle navigation menu"
+              className="flex size-10 items-center justify-center rounded-full border border-foreground/15 text-foreground transition-colors hover:border-primary hover:text-primary sm:size-11 lg:hidden"
+            >
+              {menuOpen ? (
+                <X className="size-5" aria-hidden />
+              ) : (
+                <Menu className="size-5" aria-hidden />
+              )}
+            </button>
           </div>
-
-          <button
-            type="button"
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-expanded={menuOpen}
-            aria-label="Toggle navigation menu"
-            className="flex size-11 items-center justify-center rounded-full border border-foreground/15 text-foreground transition-colors hover:border-primary hover:text-primary lg:hidden"
-          >
-            {menuOpen ? (
-              <X className="size-5" aria-hidden />
-            ) : (
-              <Menu className="size-5" aria-hidden />
-            )}
-          </button>
         </Container>
       </div>
 
