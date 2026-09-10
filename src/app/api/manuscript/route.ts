@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { site } from "@/data/site";
+import { getLeadRecipients } from "@/lib/leadEmail";
 import type { LeadTracking } from "@/lib/tracking";
 import {
   isAllowedManuscriptFile,
@@ -116,7 +117,7 @@ export async function POST(request: Request) {
     const smtpPass = getEnv("SMTP_PASS");
     const smtpHost = process.env.SMTP_HOST ?? "smtp.gmail.com";
     const smtpPort = Number(process.env.SMTP_PORT ?? "587");
-    const leadEmailTo = process.env.LEAD_EMAIL_TO ?? smtpUser;
+    const leadEmailTo = getLeadRecipients();
 
     const transporter = nodemailer.createTransport({
       host: smtpHost,
