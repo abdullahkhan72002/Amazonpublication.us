@@ -1,18 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useState, type FormEvent } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { AtSign, Phone, X } from "lucide-react";
 import { leadPopupContent } from "@/data/leadPopup";
 import { site } from "@/data/site";
 import { submitLeadForm } from "@/lib/submitLeadForm";
-import { THANK_YOU_PATH } from "@/lib/thankYou";
+import { THANK_YOU_PATH, goToThankYou } from "@/lib/thankYou";
 
 const POPUP_DELAY_MS = 2000;
 
 export default function LeadPopup() {
   const pathname = usePathname();
-  const router = useRouter();
   const isThankYou = pathname === THANK_YOU_PATH;
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
@@ -63,26 +62,32 @@ export default function LeadPopup() {
     setStatus("loading");
     setErrorMessage("");
 
-    const formData = new FormData(event.currentTarget);
-    const result = await submitLeadForm({
-      formSource: "popup",
-      fields: {
-        name: String(formData.get("name") ?? "").trim(),
-        email: String(formData.get("email") ?? "").trim(),
-        phone: String(formData.get("phone") ?? "").trim(),
-        message: String(formData.get("message") ?? "").trim(),
-      },
-      website: String(formData.get("website") ?? ""),
-    });
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
-    if (!result.ok) {
+    try {
+      const result = await submitLeadForm({
+        formSource: "popup",
+        fields: {
+          name: String(formData.get("name") ?? "").trim(),
+          email: String(formData.get("email") ?? "").trim(),
+          phone: String(formData.get("phone") ?? "").trim(),
+          message: String(formData.get("message") ?? "").trim(),
+        },
+        website: String(formData.get("website") ?? ""),
+      });
+
+      if (!result.ok) {
+        setStatus("error");
+        setErrorMessage(result.error);
+        return;
+      }
+
+      goToThankYou();
+    } catch {
       setStatus("error");
-      setErrorMessage(result.error);
-      return;
+      setErrorMessage("Something went wrong. Please try again.");
     }
-
-    router.push(THANK_YOU_PATH);
-    close();
   };
 
   if (isThankYou || !open) return null;

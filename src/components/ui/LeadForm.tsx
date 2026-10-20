@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import { submitLeadForm } from "@/lib/submitLeadForm";
-import { THANK_YOU_PATH } from "@/lib/thankYou";
+import { goToThankYou } from "@/lib/thankYou";
 
 export type LeadFormField = {
   name: string;
@@ -62,7 +61,6 @@ export default function LeadForm({
   className = "",
   onSuccess,
 }: LeadFormProps) {
-  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
@@ -89,26 +87,31 @@ export default function LeadForm({
     setStatus("loading");
     setErrorMessage("");
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const fieldsData = Object.fromEntries(
       fields.map((field) => [field.name, String(formData.get(field.name) ?? "").trim()]),
     ) as Record<string, string>;
 
-    const result = await submitLeadForm({
-      formSource,
-      fields: fieldsData,
-      website: String(formData.get("website") ?? ""),
-    });
+    try {
+      const result = await submitLeadForm({
+        formSource,
+        fields: fieldsData,
+        website: String(formData.get("website") ?? ""),
+      });
 
-    if (!result.ok) {
+      if (!result.ok) {
+        setStatus("error");
+        setErrorMessage(result.error);
+        return;
+      }
+
+      onSuccess?.();
+      goToThankYou();
+    } catch {
       setStatus("error");
-      setErrorMessage(result.error);
-      return;
+      setErrorMessage("Something went wrong. Please try again.");
     }
-
-    event.currentTarget.reset();
-    onSuccess?.();
-    router.push(THANK_YOU_PATH);
   };
 
   const renderField = (field: LeadFormField) => (

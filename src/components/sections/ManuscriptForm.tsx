@@ -17,7 +17,6 @@ import {
   Upload,
   User,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { HighlightedText } from "@/components/ui/SectionHeading";
@@ -34,7 +33,7 @@ import {
   MANUSCRIPT_MAX_LABEL,
 } from "@/lib/manuscript";
 import { submitManuscript } from "@/lib/submitManuscript";
-import { THANK_YOU_PATH } from "@/lib/thankYou";
+import { goToThankYou } from "@/lib/thankYou";
 
 const inputClasses =
   "text-nav w-full rounded-lg border border-foreground/12 bg-white px-4 py-3 text-foreground outline-none transition-all placeholder:text-foreground/35 focus:border-primary focus:ring-2 focus:ring-primary/15";
@@ -81,7 +80,6 @@ function assignFile(input: HTMLInputElement, file: File) {
 }
 
 export default function ManuscriptForm() {
-  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
@@ -151,18 +149,20 @@ export default function ManuscriptForm() {
       return;
     }
 
-    const result = await submitManuscript(form);
+    try {
+      const result = await submitManuscript(form);
 
-    if (!result.ok) {
+      if (!result.ok) {
+        setStatus("error");
+        setErrorMessage(result.error);
+        return;
+      }
+
+      goToThankYou();
+    } catch {
       setStatus("error");
-      setErrorMessage(result.error);
-      return;
+      setErrorMessage("Something went wrong. Please try again.");
     }
-
-    form.reset();
-    setFileName("");
-    setFileSize("");
-    router.push(THANK_YOU_PATH);
   };
 
   return (
