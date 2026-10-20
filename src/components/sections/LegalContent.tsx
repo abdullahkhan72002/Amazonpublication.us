@@ -1,4 +1,6 @@
+import type { ReactNode } from "react";
 import Container from "@/components/ui/Container";
+import { site } from "@/data/site";
 
 export type LegalBlock =
   | { type: "paragraph"; text: string }
@@ -9,6 +11,45 @@ export type LegalBlock =
 export type LegalContentProps = {
   blocks: LegalBlock[];
 };
+
+const CONTACT_LINK_CLASS =
+  "text-primary font-medium underline-offset-2 hover:underline";
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function LinkedLegalText({ text }: { text: string }) {
+  const pattern = new RegExp(
+    `(${escapeRegExp(site.email)}|${escapeRegExp(site.phone)})`,
+    "g",
+  );
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+
+    const value = match[0];
+    const href = value.includes("@") ? `mailto:${value}` : site.phoneHref;
+    nodes.push(
+      <a key={`contact-${key++}`} href={href} className={CONTACT_LINK_CLASS}>
+        {value}
+      </a>,
+    );
+    lastIndex = match.index + value.length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return <>{nodes.length > 0 ? nodes : text}</>;
+}
 
 export default function LegalContent({ blocks }: LegalContentProps) {
   return (
@@ -47,7 +88,9 @@ export default function LegalContent({ blocks }: LegalContentProps) {
                   className="flex list-disc flex-col gap-2 pl-5 text-body text-foreground/80"
                 >
                   {block.items.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>
+                      <LinkedLegalText text={item} />
+                    </li>
                   ))}
                 </ul>
               );
@@ -55,7 +98,7 @@ export default function LegalContent({ blocks }: LegalContentProps) {
 
             return (
               <p key={key} className="text-body text-foreground/80">
-                {block.text}
+                <LinkedLegalText text={block.text} />
               </p>
             );
           })}

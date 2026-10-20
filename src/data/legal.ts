@@ -251,6 +251,10 @@ export const privacyPolicyContent = {
       type: "paragraph",
       text: "Email: info@amazonpublication.us",
     },
+    {
+      type: "paragraph",
+      text: "Phone: +1 424 282 3304",
+    },
   ] satisfies LegalBlock[],
 };
 
@@ -482,6 +486,10 @@ export const termsAndConditionsContent = {
     },
     {
       type: "paragraph",
+      text: "Phone: +1 424 282 3304",
+    },
+    {
+      type: "paragraph",
       text: "We are not responsible for communications originating from unauthorized third-party email addresses, phone numbers, or impersonation attempts.",
     },
     {
@@ -590,6 +598,10 @@ export const termsAndConditionsContent = {
     {
       type: "paragraph",
       text: "Email: info@amazonpublication.us",
+    },
+    {
+      type: "paragraph",
+      text: "Phone: +1 424 282 3304",
     },
   ] satisfies LegalBlock[],
 };
@@ -715,6 +727,10 @@ export const returnAndRefundContent = {
     {
       type: "paragraph",
       text: "Email: info@amazonpublication.us",
+    },
+    {
+      type: "paragraph",
+      text: "Phone: +1 424 282 3304",
     },
   ] satisfies LegalBlock[],
 };
