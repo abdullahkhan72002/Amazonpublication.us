@@ -77,7 +77,7 @@ export default function LeadForm({
       : "rounded-2xl bg-primary p-6 shadow-2xl shadow-black/20 sm:p-8";
 
   const titleClasses = isOnDark ? "text-white" : "text-foreground";
-  const labelClasses = isOnDark ? "text-[#131a22]/80" : "text-foreground/80";
+  const labelClasses = isOnDark ? "text-white/80" : "text-foreground/80";
   const controlClasses = isOnDark
     ? "border-white/15 bg-white text-foreground placeholder:text-foreground/35 focus:border-white"
     : "border-foreground/15 bg-white text-foreground placeholder:text-foreground/35 focus:border-primary";

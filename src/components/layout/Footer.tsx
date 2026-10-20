@@ -27,7 +27,7 @@ export default function Footer({
   legal,
 }: FooterProps) {
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-surface-dark text-white">
       <Container className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col gap-6">
           <img src="/newlogo-white.png" alt="Amazon Publication" className="w-40" />

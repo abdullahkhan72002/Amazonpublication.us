@@ -216,7 +216,7 @@ export default function Header({
         <button
           type="button"
           aria-label="Close navigation menu"
-          className={`absolute inset-0 bg-primary/70 backdrop-blur-sm transition-opacity duration-300 ${
+          className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
             menuOpen ? "opacity-100" : "opacity-0"
           }`}
           onClick={closeMenu}

@@ -105,7 +105,7 @@ export default function LeadPopup() {
       <button
         type="button"
         aria-label="Close popup"
-        className="absolute inset-0 bg-primary/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-surface-dark/80 backdrop-blur-sm"
         onClick={close}
       />
 

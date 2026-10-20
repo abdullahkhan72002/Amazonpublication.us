@@ -33,18 +33,18 @@ export default function PremiumCta({
 }: PremiumCtaProps) {
   return (
     <section className="overflow-hidden bg-white py-14 lg:py-16">
-      <Container className="grid items-start gap-8 lg:grid-cols-2 lg:gap-0">
-        <Reveal variant="fade-right" className="z-20">
+      <Container className="grid items-start gap-8 lg:grid-cols-2 lg:gap-4">
+        <Reveal variant="fade-right" className="z-20 flex justify-center lg:justify-start">
           <img
-            src="/premium-sec-image.webp"
+            src="/premium-sec-laptop.webp"
             alt="Premium book publishing services"
-            className="relative z-20 w-full"
+            className="relative z-20 w-[88%] max-w-xl lg:w-[92%] lg:max-w-none"
           />
         </Reveal>
 
         <div className="flex flex-col">
           <Reveal variant="fade-left" delay={80}>
-            <div className="relative z-0 mt-1 bg-primary py-3 pl-6 sm:pl-8 lg:-ml-28 lg:-mr-[50vw] lg:pl-32 lg:pr-[50vw]">
+            <div className="relative z-0 mt-1 bg-primary py-3 pl-6 sm:pl-8 lg:-ml-10 lg:-mr-[50vw] lg:pl-16 lg:pr-[50vw]">
               <span className="font-heading text-5xl font-bold text-white sm:text-8xl">
                 {bandWord}
               </span>

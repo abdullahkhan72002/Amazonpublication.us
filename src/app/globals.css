@@ -7,6 +7,7 @@
   --secondary: #ff9900;
   --primary-ink: #131a22;
   --button: #efa746;
+  --surface-dark: #1b1b1b;
   /* Top bar (h-9) + main nav (h-20) */
   --header-height: 7.25rem;
   --container-content: 1240px;
@@ -20,6 +21,7 @@
   --color-secondary: var(--secondary);
   --color-secondary-dark: #e47911;
   --color-secondary-soft: #ffffff;
+  --color-surface-dark: var(--surface-dark);
   --font-heading: var(--font-syne), sans-serif;
   --font-sans: var(--font-rubik), sans-serif;
   --max-width-container: 1240px;
