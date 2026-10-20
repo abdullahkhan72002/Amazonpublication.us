@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { isContactChatHref, openZendeskChat } from "@/lib/openChat";
 
 export type SweepVariant =
   | "secondary-dark"
@@ -60,6 +63,15 @@ export default function Button({
           {icon}
           {children}
         </a>
+      );
+    }
+
+    if (isContactChatHref(rest.href)) {
+      return (
+        <button type="button" onClick={openZendeskChat} className={classes}>
+          {icon}
+          {children}
+        </button>
       );
     }
 
