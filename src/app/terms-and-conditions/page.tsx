@@ -14,7 +14,7 @@ export default function TermsAndConditionsPage() {
   return (
     <>
       <div className="bg-white">
-        <PageHero {...termsAndConditionsContent.hero} />
+        <PageHero {...termsAndConditionsContent.hero} animated={false} />
       </div>
       <LegalContent blocks={termsAndConditionsContent.blocks} />
     </>

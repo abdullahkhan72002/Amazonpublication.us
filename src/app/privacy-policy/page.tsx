@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <div className="bg-white">
-        <PageHero {...privacyPolicyContent.hero} />
+        <PageHero {...privacyPolicyContent.hero} animated={false} />
       </div>
       <LegalContent blocks={privacyPolicyContent.blocks} />
     </>

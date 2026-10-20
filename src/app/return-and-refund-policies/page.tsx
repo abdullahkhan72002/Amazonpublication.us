@@ -14,7 +14,7 @@ export default function ReturnAndRefundPoliciesPage() {
   return (
     <>
       <div className="bg-white">
-        <PageHero {...returnAndRefundContent.hero} />
+        <PageHero {...returnAndRefundContent.hero} animated={false} />
       </div>
       <LegalContent blocks={returnAndRefundContent.blocks} />
     </>
