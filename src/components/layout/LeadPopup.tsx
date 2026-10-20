@@ -153,25 +153,25 @@ export default function LeadPopup() {
             ))}
           </ul>
 
-          <div className="mt-8 hidden flex-col gap-6 sm:gap-10 lg:flex lg:flex-row">
-            <a href={site.phoneHref} className="group flex flex-col gap-1">
+          <div className="mt-8 hidden flex-col gap-6 sm:gap-8 lg:flex lg:flex-row lg:flex-nowrap">
+            <a href={site.phoneHref} className="group flex shrink-0 flex-col gap-1">
               <span className="text-nav flex items-center gap-2 text-white">
                 <Phone className="size-4" aria-hidden />
                 {leadPopupContent.callLabel}
               </span>
-              <span className="text-nav text-white/75 transition-colors group-hover:text-white">
+              <span className="text-nav whitespace-nowrap text-white/75 transition-colors group-hover:text-white">
                 {site.phone}
               </span>
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="group flex flex-col gap-1"
+              className="group flex min-w-0 flex-col gap-1"
             >
               <span className="text-nav flex items-center gap-2 text-white">
                 <AtSign className="size-4" aria-hidden />
                 {leadPopupContent.discussLabel}
               </span>
-              <span className="text-nav text-white/75 transition-colors group-hover:text-white">
+              <span className="text-nav whitespace-nowrap text-white/75 transition-colors group-hover:text-white">
                 {site.email}
               </span>
             </a>
