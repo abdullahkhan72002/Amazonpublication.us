@@ -1,8 +1,8 @@
 export const site = {
   name: "Amazon Publication",
   email: "info@amazonpublication.us",
-  phone: "+1 424 282 3304",
-  phoneHref: "tel:+14242823304",
+  phone: "(424) 286-8260",
+  phoneHref: "tel:+14242868260",
 };
 
 export const serviceLinks = [

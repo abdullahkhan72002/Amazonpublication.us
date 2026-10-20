@@ -253,7 +253,7 @@ export const privacyPolicyContent = {
     },
     {
       type: "paragraph",
-      text: "Phone: +1 424 282 3304",
+      text: "Phone: (424) 286-8260",
     },
   ] satisfies LegalBlock[],
 };
@@ -486,7 +486,7 @@ export const termsAndConditionsContent = {
     },
     {
       type: "paragraph",
-      text: "Phone: +1 424 282 3304",
+      text: "Phone: (424) 286-8260",
     },
     {
       type: "paragraph",
@@ -601,7 +601,7 @@ export const termsAndConditionsContent = {
     },
     {
       type: "paragraph",
-      text: "Phone: +1 424 282 3304",
+      text: "Phone: (424) 286-8260",
     },
   ] satisfies LegalBlock[],
 };
@@ -730,7 +730,7 @@ export const returnAndRefundContent = {
     },
     {
       type: "paragraph",
-      text: "Phone: +1 424 282 3304",
+      text: "Phone: (424) 286-8260",
     },
   ] satisfies LegalBlock[],
 };
