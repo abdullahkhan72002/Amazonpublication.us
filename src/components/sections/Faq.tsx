@@ -71,7 +71,7 @@ export default function Faq({
           </div>
 
           {filteredItems.length === 0 ? (
-            <p className="text-body py-6 text-center text-white/65">
+            <p className="text-body py-6 text-center text-white/70">
               No questions match your search.
             </p>
           ) : (
@@ -103,7 +103,7 @@ export default function Faq({
                   </button>
 
                   {isOpen ? (
-                    <p className="text-body px-6 py-5 text-white/75">
+                    <p className="text-body px-6 py-5 text-white/80">
                       {item.answer}
                     </p>
                   ) : null}

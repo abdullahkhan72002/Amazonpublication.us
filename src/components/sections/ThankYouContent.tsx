@@ -7,7 +7,7 @@ import ThankYouConfetti from "@/components/sections/ThankYouConfetti";
 
 export default function ThankYouContent() {
   return (
-    <section className="relative isolate overflow-hidden bg-gradient-to-b from-white via-[#f5f4fb] to-white py-16 max-sm:py-12 lg:py-24">
+    <section className="relative isolate overflow-hidden bg-gradient-to-b from-white via-[#fff8f0] to-white py-16 max-sm:py-12 lg:py-24">
       <ThankYouConfetti />
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-primary/[0.05]"
@@ -15,10 +15,10 @@ export default function ThankYouContent() {
       />
 
       <div className="relative z-10 mx-auto w-full px-4 md:w-[85%] md:px-0 lg:w-[70%]">
-        <div className="overflow-hidden rounded-[1.75rem] border border-primary/10 bg-white px-6 py-12 text-center shadow-[0_28px_80px_-32px_rgba(10,0,128,0.28)] sm:px-12 sm:py-16">
+        <div className="overflow-hidden rounded-[1.75rem] border border-primary/10 bg-white px-6 py-12 text-center shadow-[0_28px_80px_-32px_rgba(255,153,0,0.28)] sm:px-12 sm:py-16">
           <div className="h-1.5 w-full rounded-full bg-primary" />
 
-          <span className="mx-auto mt-10 flex size-20 items-center justify-center rounded-full bg-primary text-white shadow-[0_12px_40px_-12px_rgba(10,0,128,0.55)]">
+          <span className="mx-auto mt-10 flex size-20 items-center justify-center rounded-full bg-primary text-[#131a22] shadow-[0_12px_40px_-12px_rgba(255,153,0,0.55)]">
             <Check className="size-10" aria-hidden />
           </span>
 

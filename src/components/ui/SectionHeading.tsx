@@ -49,7 +49,7 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   const isDark = tone === "onDark";
   const titleColor = isDark ? "text-white" : "text-foreground";
-  const subtitleColor = isDark ? "text-white/70" : "text-foreground/70";
+  const subtitleColor = isDark ? "text-white/75" : "text-foreground/70";
   const highlightColor = isDark ? "text-white" : "text-primary";
   const alignment =
     align === "center" ? "text-center items-center" : "text-left items-start";

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Script from "next/script";
 
 const ZENDESK_KEY = "58e0ef52-56d9-4636-a621-71e5d4bd0f62";
-const COLOR = "#000080";
+const COLOR = "#FF9900";
 const CLEAR_WINDOW_MS = 1500;
 
 declare global {
@@ -106,7 +106,7 @@ function applyZeSettings() {
         color: {
           theme: COLOR,
           launcher: COLOR,
-          launcherText: "#FFFFFF",
+          launcherText: "#131A22",
           button: COLOR,
           header: COLOR,
           resultLists: COLOR,
@@ -124,8 +124,8 @@ function paintWidget() {
   const css =
     `.u-userLauncherColor:not([disabled]){` +
     `background-color:${COLOR} !important;` +
-    `color:#fff !important;` +
-    `fill:#fff !important;` +
+    `color:#131A22 !important;` +
+    `fill:#131A22 !important;` +
     `}` +
     `header,` +
     `[data-testid="widget-title"],` +
@@ -133,7 +133,7 @@ function paintWidget() {
     `.gJLDHj{` +
     `background:${COLOR} !important;` +
     `background-color:${COLOR} !important;` +
-    `color:#fff !important;` +
+    `color:#131A22 !important;` +
     `}`;
 
   injectCss(getFrameDoc("iframe#launcher"), css, "bb-zd-navy");

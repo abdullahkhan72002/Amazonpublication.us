@@ -137,7 +137,7 @@ export default function LeadPopup() {
             </span>
           </h2>
 
-          <p className="text-body mt-4 hidden text-white/80 lg:block">
+          <p className="text-body mt-4 hidden text-white/75 lg:block">
             {leadPopupContent.description}
           </p>
 
@@ -159,7 +159,7 @@ export default function LeadPopup() {
                 <Phone className="size-4" aria-hidden />
                 {leadPopupContent.callLabel}
               </span>
-              <span className="text-nav text-white/80 transition-colors group-hover:text-white">
+              <span className="text-nav text-white/75 transition-colors group-hover:text-white">
                 {site.phone}
               </span>
             </a>
@@ -171,7 +171,7 @@ export default function LeadPopup() {
                 <AtSign className="size-4" aria-hidden />
                 {leadPopupContent.discussLabel}
               </span>
-              <span className="text-nav text-white/80 transition-colors group-hover:text-white">
+              <span className="text-nav text-white/75 transition-colors group-hover:text-white">
                 {site.email}
               </span>
             </a>

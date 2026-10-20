@@ -2,9 +2,11 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #000000;
-  --primary: #0a0080;
-  --secondary: #0a0080;
+  --foreground: #131a22;
+  --primary: #ff9900;
+  --secondary: #ff9900;
+  --primary-ink: #131a22;
+  --button: #efa746;
   /* Top bar (h-9) + main nav (h-20) */
   --header-height: 7.25rem;
   --container-content: 1240px;
@@ -14,9 +16,9 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-deep: #0a0080;
+  --color-primary-deep: #e47911;
   --color-secondary: var(--secondary);
-  --color-secondary-dark: #0a0080;
+  --color-secondary-dark: #e47911;
   --color-secondary-soft: #ffffff;
   --font-heading: var(--font-syne), sans-serif;
   --font-sans: var(--font-rubik), sans-serif;
@@ -120,36 +122,36 @@ h6 {
 
 .btn-sweep-secondary-dark,
 .btn-sweep-secondary-light {
-  background-color: var(--primary);
+  background-color: var(--button);
   color: #ffffff;
 }
 
 .btn-sweep-secondary-dark::before,
 .btn-sweep-secondary-light::before {
-  background-color: #ffffff;
+  background-color: var(--primary);
 }
 
 .btn-sweep-secondary-dark:hover,
 .btn-sweep-secondary-light:hover {
-  color: var(--primary);
+  color: #ffffff;
 }
 
 .btn-sweep-primary-light {
-  background-color: var(--primary);
+  background-color: var(--button);
   color: #ffffff;
 }
 
 .btn-sweep-primary-light::before {
-  background-color: #ffffff;
+  background-color: var(--primary);
 }
 
 .btn-sweep-primary-light:hover {
-  color: var(--primary);
+  color: #ffffff;
 }
 
 .btn-sweep-white {
   background-color: #ffffff;
-  color: #000000;
+  color: var(--primary-ink);
 }
 
 .btn-sweep-white::before {
@@ -157,7 +159,7 @@ h6 {
 }
 
 .btn-sweep-white:hover {
-  color: #ffffff;
+  color: var(--primary-ink);
 }
 
 .btn-sweep-outline-dark {
@@ -172,7 +174,7 @@ h6 {
 
 .btn-sweep-outline-dark:hover {
   border-color: #ffffff;
-  color: var(--primary);
+  color: var(--primary-ink);
 }
 
 .bg-hero {

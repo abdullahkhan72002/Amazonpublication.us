@@ -75,7 +75,7 @@ export default function WhyChoose({
                       highlightClassName="text-white"
                     />
                   </h3>
-                  <p className="text-body text-white/75">{item.description}</p>
+                  <p className="text-body text-white/80">{item.description}</p>
                 </article>
               </Reveal>
             );

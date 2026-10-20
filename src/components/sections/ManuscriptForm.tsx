@@ -166,7 +166,7 @@ export default function ManuscriptForm() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#f5f4fb] to-white py-10 max-sm:py-8 lg:py-16">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fff8f0] to-white py-10 max-sm:py-8 lg:py-16">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-primary/[0.04]"
         aria-hidden
@@ -193,7 +193,7 @@ export default function ManuscriptForm() {
         <Reveal variant="fade-up" delay={80}>
             <form
               onSubmit={handleSubmit}
-              className="overflow-hidden rounded-[1.75rem] border border-primary/10 bg-white shadow-[0_28px_80px_-32px_rgba(10,0,128,0.28)]"
+              className="overflow-hidden rounded-[1.75rem] border border-primary/10 bg-white shadow-[0_28px_80px_-32px_rgba(255,153,0,0.28)]"
             >
               <div className="h-1.5 w-full bg-primary" />
 
@@ -449,12 +449,12 @@ export default function ManuscriptForm() {
                       className={`flex cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed px-4 py-8 text-center transition-colors ${
                         dragging || fileName
                           ? "border-primary bg-primary/[0.04]"
-                          : "border-primary/20 bg-[#f8f7fc] hover:border-primary hover:bg-primary/[0.04]"
+                          : "border-primary/20 bg-[#fff8f0] hover:border-primary hover:bg-primary/[0.04]"
                       }`}
                     >
                       {fileName ? (
                         <>
-                          <span className="flex size-12 items-center justify-center rounded-full bg-primary text-white">
+                          <span className="flex size-12 items-center justify-center rounded-full bg-primary text-[#131a22]">
                             <FileText className="size-5" aria-hidden />
                           </span>
                           <span className="font-heading text-base font-semibold text-foreground">
