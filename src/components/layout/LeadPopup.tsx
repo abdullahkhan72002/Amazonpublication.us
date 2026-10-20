@@ -1,16 +1,19 @@
 "use client";
 
 import { useCallback, useEffect, useState, type FormEvent } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AtSign, Phone, X } from "lucide-react";
 import { leadPopupContent } from "@/data/leadPopup";
 import { site } from "@/data/site";
 import { submitLeadForm } from "@/lib/submitLeadForm";
+import { THANK_YOU_PATH } from "@/lib/thankYou";
 
 const POPUP_DELAY_MS = 2000;
 
 export default function LeadPopup() {
   const pathname = usePathname();
+  const router = useRouter();
+  const isThankYou = pathname === THANK_YOU_PATH;
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
@@ -30,9 +33,13 @@ export default function LeadPopup() {
   }
 
   useEffect(() => {
+    if (isThankYou) {
+      setOpen(false);
+      return;
+    }
     const timer = window.setTimeout(() => setOpen(true), POPUP_DELAY_MS);
     return () => window.clearTimeout(timer);
-  }, [pathname]);
+  }, [pathname, isThankYou]);
 
   useEffect(() => {
     if (!open) return;
@@ -74,12 +81,11 @@ export default function LeadPopup() {
       return;
     }
 
-    setStatus("success");
-    event.currentTarget.reset();
-    window.setTimeout(close, 1800);
+    router.push(THANK_YOU_PATH);
+    close();
   };
 
-  if (!open) return null;
+  if (isThankYou || !open) return null;
 
   const inputClasses =
     "text-nav w-full rounded-lg border border-foreground/20 bg-white px-4 py-3 text-foreground outline-none transition-colors placeholder:text-foreground/40 focus:border-primary";
@@ -99,22 +105,38 @@ export default function LeadPopup() {
       />
 
       <div className="relative z-10 flex max-h-[90vh] w-full max-w-[920px] flex-col overflow-y-auto rounded-2xl shadow-2xl lg:flex-row lg:overflow-hidden">
-        <div className="bg-primary px-5 py-6 sm:px-8 sm:py-8 lg:max-h-[90vh] lg:w-[50%] lg:overflow-y-auto">
+        <button
+          type="button"
+          onClick={close}
+          aria-label="Close"
+          className="absolute right-3 top-3 z-20 flex size-8 items-center justify-center bg-primary text-white transition-colors hover:bg-white hover:text-primary max-lg:bg-white max-lg:text-primary sm:right-4 sm:top-4 lg:right-5 lg:top-5 lg:bg-primary lg:text-white"
+        >
+          <X className="size-4" aria-hidden />
+        </button>
+        <div className="flex w-full flex-col bg-primary px-5 py-4 max-lg:max-h-[50%] max-lg:pr-14 sm:px-8 sm:py-5 lg:max-h-[90vh] lg:w-[50%] lg:overflow-y-auto lg:py-8 lg:pr-16">
           <h2
             id="lead-popup-title"
-            className="font-heading text-2xl font-semibold leading-snug text-white sm:text-3xl"
+            className="font-heading text-lg font-semibold leading-snug text-white sm:text-2xl lg:text-3xl"
           >
-            {leadPopupContent.titleBefore}{" "}
-            <span className="text-white">
-              {leadPopupContent.titleHighlight}
+            <span className="lg:hidden">
+              {leadPopupContent.mobileTitleBefore}{" "}
+              <span className="text-white">
+                {leadPopupContent.mobileTitleHighlight}
+              </span>
+            </span>
+            <span className="hidden lg:inline">
+              {leadPopupContent.titleBefore}{" "}
+              <span className="text-white">
+                {leadPopupContent.titleHighlight}
+              </span>
             </span>
           </h2>
 
-          <p className="text-body mt-4 text-white/80">
+          <p className="text-body mt-4 hidden text-white/80 lg:block">
             {leadPopupContent.description}
           </p>
 
-          <ul className="mt-6 flex flex-col gap-3">
+          <ul className="mt-6 hidden flex-col gap-3 lg:flex">
             {leadPopupContent.features.map((feature) => (
               <li
                 key={feature}
@@ -126,7 +148,7 @@ export default function LeadPopup() {
             ))}
           </ul>
 
-          <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:gap-10">
+          <div className="mt-8 hidden flex-col gap-6 sm:gap-10 lg:flex lg:flex-row">
             <a href={site.phoneHref} className="group flex flex-col gap-1">
               <span className="text-nav flex items-center gap-2 text-white">
                 <Phone className="size-4" aria-hidden />
@@ -152,17 +174,8 @@ export default function LeadPopup() {
         </div>
 
         <div className="relative bg-white px-5 py-6 sm:px-8 sm:py-8 lg:max-h-[90vh] lg:w-[50%] lg:overflow-y-auto">
-          <button
-            type="button"
-            onClick={close}
-            aria-label="Close"
-            className="absolute right-4 top-4 flex size-8 items-center justify-center bg-primary text-white transition-colors hover:bg-white hover:text-primary sm:right-5 sm:top-5"
-          >
-            <X className="size-4" aria-hidden />
-          </button>
-
           <form
-            className="mt-8 flex flex-col gap-3 sm:gap-4 lg:mt-2"
+            className="flex flex-col gap-3 sm:gap-4 lg:mt-2"
             onSubmit={handleSubmit}
           >
             <input
@@ -229,12 +242,6 @@ export default function LeadPopup() {
                 className={`${inputClasses} resize-none`}
               />
             </div>
-
-            {status === "success" ? (
-              <p className="text-nav rounded-lg border border-primary/20 bg-white px-4 py-3 text-foreground">
-                Thank you! Your message has been sent.
-              </p>
-            ) : null}
 
             {status === "error" ? (
               <p className="text-nav rounded-lg border border-foreground/20 bg-white px-4 py-3 text-foreground">

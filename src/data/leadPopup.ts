@@ -1,6 +1,8 @@
 export const leadPopupContent = {
   titleBefore: "Publish Your Book on Amazon With",
   titleHighlight: "Amazon Publication",
+  mobileTitleBefore: "Get Started With 50% Off at",
+  mobileTitleHighlight: "Amazon Publication",
   description:
     "Transform your manuscript into a professionally published book with our complete Amazon publishing solutions.",
   features: [

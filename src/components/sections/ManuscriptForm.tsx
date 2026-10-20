@@ -11,13 +11,13 @@ import {
 } from "react";
 import {
   BookOpen,
-  Check,
   ChevronDown,
   FileText,
   MapPin,
   Upload,
   User,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { HighlightedText } from "@/components/ui/SectionHeading";
@@ -25,7 +25,6 @@ import {
   manuscriptGenres,
   manuscriptHeroContent,
   manuscriptSteps,
-  manuscriptThanksContent,
 } from "@/data/manuscript";
 import {
   formatFileSize,
@@ -35,6 +34,7 @@ import {
   MANUSCRIPT_MAX_LABEL,
 } from "@/lib/manuscript";
 import { submitManuscript } from "@/lib/submitManuscript";
+import { THANK_YOU_PATH } from "@/lib/thankYou";
 
 const inputClasses =
   "text-nav w-full rounded-lg border border-foreground/12 bg-white px-4 py-3 text-foreground outline-none transition-all placeholder:text-foreground/35 focus:border-primary focus:ring-2 focus:ring-primary/15";
@@ -81,6 +81,7 @@ function assignFile(input: HTMLInputElement, file: File) {
 }
 
 export default function ManuscriptForm() {
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
@@ -158,11 +159,10 @@ export default function ManuscriptForm() {
       return;
     }
 
-    setStatus("success");
     form.reset();
     setFileName("");
     setFileSize("");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    router.push(THANK_YOU_PATH);
   };
 
   return (
@@ -190,30 +190,7 @@ export default function ManuscriptForm() {
           </div>
         </Reveal>
 
-        {status === "success" ? (
-          <Reveal variant="scale">
-            <div className="overflow-hidden rounded-[1.75rem] border border-primary/10 bg-white px-6 py-12 text-center shadow-[0_28px_80px_-32px_rgba(10,0,128,0.28)] sm:px-12 sm:py-16">
-              <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-primary text-white">
-                <Check className="size-8" aria-hidden />
-              </span>
-              <h2 className="font-heading mt-6 text-2xl font-semibold text-foreground sm:text-3xl">
-                {manuscriptThanksContent.title}
-              </h2>
-              <p className="text-body mx-auto mt-4 max-w-xl text-foreground/70">
-                {manuscriptThanksContent.body}
-              </p>
-              <Button
-                type="button"
-                variant="primary-light"
-                className="mt-8"
-                onClick={() => setStatus("idle")}
-              >
-                Submit another manuscript
-              </Button>
-            </div>
-          </Reveal>
-        ) : (
-          <Reveal variant="fade-up" delay={80}>
+        <Reveal variant="fade-up" delay={80}>
             <form
               onSubmit={handleSubmit}
               className="overflow-hidden rounded-[1.75rem] border border-primary/10 bg-white shadow-[0_28px_80px_-32px_rgba(10,0,128,0.28)]"
@@ -533,7 +510,6 @@ export default function ManuscriptForm() {
               </div>
             </form>
           </Reveal>
-        )}
       </div>
     </section>
   );

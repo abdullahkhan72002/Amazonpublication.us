@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import { submitLeadForm } from "@/lib/submitLeadForm";
+import { THANK_YOU_PATH } from "@/lib/thankYou";
 
 export type LeadFormField = {
   name: string;
@@ -60,6 +62,7 @@ export default function LeadForm({
   className = "",
   onSuccess,
 }: LeadFormProps) {
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
@@ -103,9 +106,9 @@ export default function LeadForm({
       return;
     }
 
-    setStatus("success");
     event.currentTarget.reset();
     onSuccess?.();
+    router.push(THANK_YOU_PATH);
   };
 
   const renderField = (field: LeadFormField) => (
@@ -172,12 +175,6 @@ export default function LeadForm({
 
           return renderField(group);
         })}
-
-        {status === "success" ? (
-          <p className="text-nav rounded-md border border-primary/20 bg-white px-4 py-3 text-foreground">
-            Thank you! Your message has been sent. We&apos;ll get back to you soon.
-          </p>
-        ) : null}
 
         {status === "error" ? (
           <p className="text-nav rounded-md border border-foreground/20 bg-white px-4 py-3 text-foreground">
