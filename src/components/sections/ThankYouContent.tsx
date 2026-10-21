@@ -36,24 +36,14 @@ export default function ThankYouContent() {
             way to your inbox.
           </p>
 
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex justify-center">
             <Button
               href={CALENDLY_URL}
               variant="primary-light"
-              icon={<Calendar className="size-4" aria-hidden />}
-              className="w-full sm:w-auto"
+              icon={<Calendar className="size-5" aria-hidden />}
+              className="w-full max-w-md !bg-primary px-8 py-4 text-lg font-semibold shadow-[0_16px_40px_-10px_rgba(255,153,0,0.7)] sm:w-auto sm:min-w-[280px]"
             >
-              Book a Free 15-Min Call
-            </Button>
-            <Button href="/" variant="secondary-dark" className="w-full sm:w-auto">
-              Back to home
-            </Button>
-            <Button
-              href="/submit-manuscript"
-              variant="secondary-dark"
-              className="w-full sm:w-auto"
-            >
-              Submit a manuscript
+              Book a Meeting
             </Button>
           </div>
 
