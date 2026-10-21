@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Script from "next/script";
+import { openZendeskChat } from "@/lib/openChat";
 
 const ZENDESK_KEY = "58e0ef52-56d9-4636-a621-71e5d4bd0f62";
 const COLOR = "#FF9900";
@@ -144,10 +145,24 @@ export default function ZendeskWidget() {
   useEffect(() => {
     const timers: number[] = [];
     let autoOpenBound = false;
+    let unreadOpenBound = false;
     let clearInputBound = false;
     let colorEventsBound = false;
     let colorTries = 0;
     let bindTries = 0;
+
+    function openFromAgentMessage(count?: unknown) {
+      const n =
+        typeof count === "number"
+          ? count
+          : typeof count === "string"
+            ? Number(count)
+            : Number.NaN;
+
+      if (Number.isFinite(n) && n <= 0) return;
+
+      openZendeskChat();
+    }
 
     function initAutoOpen() {
       const zE = getZe();
@@ -155,13 +170,34 @@ export default function ZendeskWidget() {
 
       zE(() => {
         zE("webWidget", "open");
-        zE("webWidget:on", "chat:unreadMessages", (number: unknown) => {
-          if (typeof number === "number" && number > 0) {
-            zE("webWidget", "show");
-            zE("webWidget", "open");
-          }
-        });
       });
+      return true;
+    }
+
+    function bindUnreadOpen() {
+      const zE = getZe();
+      if (!zE) return false;
+
+      try {
+        zE("webWidget:on", "chat:unreadMessages", openFromAgentMessage);
+      } catch {
+        return false;
+      }
+
+      try {
+        zE("messenger:on", "unreadMessages", openFromAgentMessage);
+      } catch {
+        // Messaging widget is not always enabled.
+      }
+
+      try {
+        window.$zopim?.(() => {
+          window.$zopim?.livechat?.setOnUnreadMsgs?.(openFromAgentMessage);
+        });
+      } catch {
+        // Zopim API is optional.
+      }
+
       return true;
     }
 
@@ -215,6 +251,7 @@ export default function ZendeskWidget() {
 
     const boot = window.setInterval(() => {
       if (!autoOpenBound) autoOpenBound = initAutoOpen();
+      if (!unreadOpenBound) unreadOpenBound = bindUnreadOpen();
       if (!clearInputBound) clearInputBound = bindClearInput();
       applyZeSettings();
       paintWidget();
@@ -225,7 +262,14 @@ export default function ZendeskWidget() {
 
       bindTries += 1;
       colorTries += 1;
-      if ((autoOpenBound && clearInputBound && colorEventsBound && colorTries > 60) || bindTries > 100) {
+      if (
+        (autoOpenBound &&
+          unreadOpenBound &&
+          clearInputBound &&
+          colorEventsBound &&
+          colorTries > 60) ||
+        bindTries > 100
+      ) {
         window.clearInterval(boot);
       }
     }, 200);
@@ -237,10 +281,15 @@ export default function ZendeskWidget() {
   }, []);
 
   return (
-    <Script
-      id="ze-snippet"
-      src={`https://static.zdassets.com/ekr/snippet.js?key=${ZENDESK_KEY}`}
-      strategy="afterInteractive"
-    />
+    <>
+      <Script id="ze-settings" strategy="beforeInteractive">
+        {`window.zESettings=window.zESettings||{};window.zESettings.webWidget=Object.assign({},window.zESettings.webWidget,{chat:{connectOnPageLoad:true}});`}
+      </Script>
+      <Script
+        id="ze-snippet"
+        src={`https://static.zdassets.com/ekr/snippet.js?key=${ZENDESK_KEY}`}
+        strategy="afterInteractive"
+      />
+    </>
   );
 }

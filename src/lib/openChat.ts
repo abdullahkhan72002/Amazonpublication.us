@@ -1,6 +1,13 @@
 declare global {
   interface Window {
     zE?: (...args: unknown[]) => unknown;
+    $zopim?: {
+      (cb: () => void): void;
+      livechat?: {
+        window?: { show: () => void };
+        setOnUnreadMsgs?: (cb: (count: number) => void) => void;
+      };
+    };
   }
 }
 
@@ -8,13 +15,25 @@ export function openZendeskChat() {
   if (typeof window === "undefined") return;
 
   const zE = typeof window.zE === "function" ? window.zE : null;
-  if (!zE) return;
+  if (zE) {
+    try {
+      zE("webWidget", "show");
+      zE("webWidget", "open");
+    } catch {
+      // Classic widget may still be booting.
+    }
+    try {
+      zE("messenger", "show");
+      zE("messenger", "open");
+    } catch {
+      // Messaging widget is not always enabled.
+    }
+  }
 
   try {
-    zE("webWidget", "show");
-    zE("webWidget", "open");
+    window.$zopim?.livechat?.window?.show();
   } catch {
-    // Widget may still be booting.
+    // Zopim API is optional.
   }
 }
 
