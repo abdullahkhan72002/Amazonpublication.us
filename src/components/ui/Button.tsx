@@ -66,6 +66,21 @@ export default function Button({
       );
     }
 
+    const isExternal = rest.href.startsWith("http://") || rest.href.startsWith("https://");
+    if (isExternal) {
+      return (
+        <a
+          href={rest.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes}
+        >
+          {icon}
+          {children}
+        </a>
+      );
+    }
+
     if (isContactChatHref(rest.href)) {
       return (
         <button type="button" onClick={openZendeskChat} className={classes}>
